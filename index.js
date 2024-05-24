@@ -90,6 +90,10 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/test", (req, res) => {
+  res.json({ message: "Hello from the server!" });
+});
+
 app.all("*", (req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
