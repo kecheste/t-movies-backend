@@ -38,8 +38,6 @@ const fetchCounts = async () => {
   return { userCount, channelCount, programCount };
 };
 
-// SOCKET.IO LIVE UPDATE COUNTER
-
 io.on("connection", async (socket) => {
   console.log("New client connected");
 
