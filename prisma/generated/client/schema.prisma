@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Program {
+  id          Int    @id @default(autoincrement())
+  title       String @db.VarChar(255)
+  duration    Int
+  description String @db.VarChar(255)
+  channelId   Int
+  typeId      Int
+  categoryId  Int
+  status      String @db.VarChar(255)
+  watchLater  User[] @relation("WatchLater")
+  favorites   User[] @relation("Favorites")
+}
+
+model Channel {
+  id     Int    @id @default(autoincrement())
+  name   String @db.VarChar(255)
+  status String @db.VarChar(255)
+}
+
+model Type {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  googleId   String    @unique @db.VarChar(255)
+  email      String    @unique @db.VarChar(255)
+  photo      String    @db.VarChar(255)
+  watchLater Program[] @relation("WatchLater")
+  favorites  Program[] @relation("Favorites")
+}

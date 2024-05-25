@@ -1,11 +1,8 @@
 {
   "version": 2,
   "builds": [
-    { "src": "prisma/schema.prisma", "use": "@prisma/cli" },
+    { "src": "prisma/schema.prisma", "use": "prisma" },
     { "src": "/.*", "use": "@vercel/node" }
   ],
-  "routes": [{ "src": "/.*", "dest": "/index.js" }],
-  "env": {
-    "DATABASE_URL": "jdbc:postgresql://SG-cookie-gate-34-5384-pgsql-master.servers.mongodirector.com:5432/tmovies?ssl=false"
-  }
+  "routes": [{ "src": "/.*", "dest": "/index.js" }]
 }
