@@ -22,8 +22,5 @@
     "passport-google-oauth20": "^2.0.0",
     "socket.io": "^4.7.5",
     "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "prisma": "^5.14.0"
   }
 }
