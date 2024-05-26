@@ -22,12 +22,12 @@ router.get("/login/success", async (req, res) => {
   }
 });
 
-router.get("/google", passport.authenticate("google", ["profile", "email"]));
+router.get("/google", passport.authenticate("google", ["profile"]));
 
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/login/failed",
+    failureRedirect: "/login",
   }),
   async (req, res) => {
     const updatedCounts = await fetchCounts();
