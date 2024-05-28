@@ -8,6 +8,14 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/login/success", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+  );
   if (req.user) {
     res.status(200).json({
       error: false,
@@ -30,6 +38,14 @@ router.get(
     failureRedirect: "/login",
   }),
   async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
     const updatedCounts = await fetchCounts();
     req.io.emit("updatedData", updatedCounts);
     res.redirect(process.env.FRONT_URL);
@@ -37,6 +53,14 @@ router.get(
 );
 
 router.get("/logout", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+  );
   req.logout();
   res.redirect(`${process.env.FRONT_URL}/login`);
 });
